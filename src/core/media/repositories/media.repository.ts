@@ -1,0 +1,16 @@
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { EntityManager, Repository } from 'typeorm';
+import { AbstractRepository } from '../../../libs/database/abstract.repository';
+import { Media } from '../entities/media.entity';
+
+@Injectable()
+export class MediaRepository extends AbstractRepository<Media> {
+    constructor(
+        @InjectRepository(Media)
+        mediaRepository: Repository<Media>,
+        entityManager: EntityManager,
+    ) {
+        super(mediaRepository, entityManager);
+    }
+}
